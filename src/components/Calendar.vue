@@ -1,6 +1,8 @@
 <template>
   <div class="calendar">
-    <h3>Каледнарь</h3>
+    <div class="container">
+      <h3>Календарь</h3>
+    </div>
   </div>
 </template>
 
@@ -12,5 +14,122 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+  .calendar {
+    font-family: "CyrillicOld";
+    color: rgb(3,77,124);
+    font-size: 20pt;
+  }
 
+  .container {
+    width: 900px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  h1,h2,h3,h4 {
+    color:rgb(238,29,31);
+  }
+
+  .title {
+    font-size: 20pt;
+  }
+
+  .subtitle {
+    font-size: 12pt;
+  }
+  .red{
+    color:rgb(238,29,31);
+  }
+  .sedmica {
+    background-color: rgb(246,255,175);
+  }
+  .dni_predkov {
+    background-color: rgb(255,125,124);
+  }
+  .roditelskie_dni {
+    background-color: rgb(110,246,136);
+  }
+  .post {
+    background-image: linear-gradient(45deg, rgb(118,214,251) 50%, transparent 50%);
+  }
+
+  .zhertvy_perunu {
+    background-color: rgb(255,32,28);
+  }
+
+  .zhatva {
+    background-color: rgb(83,27,147);
+  }
+
+  table.zagolovok {
+    font-size: 14pt;
+  }
+
+  table.zagolovok td.bok, th.bok {
+    color: rgb(238,29,31);	
+  }
+
+
+  table.mesyac {
+    border: 1px solid rgb(3,77,124);
+    border-collapse: collapse;
+    font-size: 20pt;
+  }
+
+  th.mesyac, td.mesyac {
+    border: 1px solid rgb(3,77,124);
+    padding: 5px;
+    margin: 5px;
+    width: 1.5em;
+    height: 2em;
+    border-right: 0px;
+    text-align: center;
+  }
+
+  .nazvaniya_dney {
+    text-align: center;
+  }
+
+  hr {
+    border-top: 1px solid rgb(0,113,31);
+    border-bottom: 0px;
+    /*height: 1px;*/
+    margin: 0;
+    /*padding-bottom: 1px;*/
+    border-collapse: collapse;
+  }
+
+  td.grig {
+    font-family: "Arial";
+    font-size: 9pt;
+    border-left: 0px;
+    color:rgb(0,113,31);
+    text-align: center;
+    width: 4em;
+
+  }
+
+  td.grig_mini {
+    font-family: "Arial";
+    font-size: 7pt;
+    border-left: 0px;
+    color:rgb(0,113,31);
+    text-align: center;
+    width: 4em;
+
+  }
+
+  .spisok_prazdnikov {
+    font-size: 14pt;
+  }
+
+  table.legenda {
+    font-size: 14pt;
+  }
+
+  th.legenda,td.legenda {
+    white-space: nowrap;
+    border: 0px;
+    text-align: left;
+  }
 </style>
