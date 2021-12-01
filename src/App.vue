@@ -1,15 +1,15 @@
 <template>
   <img alt="Old calendar logo" src="./assets/simbol-valkirija.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <OldCalMenu msg="Славянский календарь"/>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import OldCalMenu from './components/OldCalMenu.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    OldCalMenu
   }
 }
 </script>
