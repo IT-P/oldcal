@@ -1,19 +1,20 @@
 <template>
   <div align="center">
+    <button @click="tekuschee_leto()">Сейчас</button>
     <h1>Коляды Даръ {{ LETO }}</h1>
     <div style="page-break-after: always"></div>
     <table border="0" class="zagolovok" width="800px">
       <tr>
         <th class="bok" width="33%">
-          Лесной Орёл <br />
-          10-е Лѣто 53-го Круга<br />
+          {{ NAZVANIYA_LET[LETO_V_KRUGE_ZHIZNI-1] }} <br />
+          {{ LETO_V_KRUGE_ZHIZNI }}-е Лѣто 53-го Круга<br />
           на Круголѣте Числобога
         </th>
         <th>
           <span class="title red" width="34%">ЭПОХА ВОЛКА</span>
         </th>
         <th class="bok" width="33%">
-          Лѣто 13030<br />отъ Великай Стужи<br />на Круголѣте Числобога
+          Лѣто {{ 5500 + LETO}}<br />отъ Великай Стужи<br />на Круголѣте Числобога
         </th>
       </tr>
     </table>
@@ -32,18 +33,62 @@ export default {
   methods: {
     tekuschee_leto: function () {
       const current_grig_date = new Date();
-      if(current_grig_date.getMonth() < 9) {
-          this.LETO = 5507 + current_grig_date.getFullYear();
+      if (current_grig_date.getMonth() < 9) {
+        this.LETO = 5508 + current_grig_date.getFullYear();
       }
-      if(current_grig_date.getMonth() > 9) {
+      if (current_grig_date.getMonth() > 9) {
+        this.LETO = 5509 + current_grig_date.getFullYear();
+      }
+      if (current_grig_date.getMonth() == 9) {
+        var tmp_leto = 5509 + current_grig_date.getFullYear();
+        var tmp_leto_v_kruge_zhizni = tmp_leto - 7520;
+        var tmp_leto_v_kruge_let = (tmp_leto_v_kruge_zhizni % 16) - 1;
+        if (tmp_leto_v_kruge_let < 0) {
+          tmp_leto_v_kruge_let = 15;
+        }
+        if (
+          current_grig_date.getDate() <
+          this.den_nachala_leta[tmp_leto_v_kruge_let]
+        ) {
           this.LETO = 5508 + current_grig_date.getFullYear();
+        }
+
+        if (
+          current_grig_date.getDate() >
+          this.den_nachala_leta[tmp_leto_v_kruge_let]
+        ) {
+          this.LETO = 5509 + current_grig_date.getFullYear();
+        }
+
+        if (
+          current_grig_date.getDate() ==
+          this.den_nachala_leta[tmp_leto_v_kruge_let]
+        ) {
+          if (current_grig_date.getHours() < 18) {
+            this.LETO = 5508 + current_grig_date.getFullYear();
+          } else {
+            this.LETO = 5509 + current_grig_date.getFullYear();
+          }
+        }
+        // this.LETO_V_KRUGE_ZHIZNI = 777;
       }
+      this.LETO_V_KRUGE_ZHIZNI = this.LETO - 7520;
+      this.LETO_V_KRUGE_LET = this.LETO_V_KRUGE_ZHIZNI % 16;
+      if (this.LETO_V_KRUGE_LET == 0) {
+        this.LETO_V_KRUGE_LET = 16;
+      }
+    },
+    beforeMount() {
+      this.tekuschee_leto();
     },
   },
   data() {
     return {
-      LETO: 7530,
-      nazvzniya_let: [
+      LETO: 1000,
+      SVYASCHENNOE_LETO: 0,
+      LETO_V_KRUGE_ZHIZNI: 0,
+      LETO_V_KRUGE_LET: 0,
+      NAZVANIYA_LET: [
         "Земной Путь",
         "Чёрный Жрец",
         "Звёздная Дева",
@@ -188,6 +233,9 @@ export default {
         "Лунный Тур",
         "Божий Дом",
         "Священный Храм Бога",
+      ],
+      den_nachala_leta: [
+        23, 23, 23, 23, 22, 22, 22, 22, 21, 21, 21, 21, 20, 20, 20, 20,
       ],
     };
   },
