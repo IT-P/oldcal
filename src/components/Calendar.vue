@@ -1,12 +1,18 @@
 <template>
   <div align="center">
-    <button @click="tekuschee_leto()">Сейчас</button>
+    <div>
+      <span class="arrow" @click="leto_nazad()">&laquo;</span>
+      &nbsp;&nbsp;
+      <span class="arrow" @click="tekuschee_leto()">Текущее лето</span>
+      &nbsp;&nbsp;
+      <span class="arrow" @click="leto_vpered()">&raquo;</span>
+    </div>
     <h1>Коляды Даръ {{ LETO }}</h1>
     <div style="page-break-after: always"></div>
     <table border="0" class="zagolovok" width="800px">
       <tr>
         <th class="bok" width="33%">
-          {{ NAZVANIYA_LET[LETO_V_KRUGE_ZHIZNI-1] }} <br />
+          {{ NAZVANIYA_LET[LETO_V_KRUGE_ZHIZNI - 1] }} <br />
           {{ LETO_V_KRUGE_ZHIZNI }}-е Лѣто 53-го Круга<br />
           на Круголѣте Числобога
         </th>
@@ -14,7 +20,8 @@
           <span class="title red" width="34%">ЭПОХА ВОЛКА</span>
         </th>
         <th class="bok" width="33%">
-          Лѣто {{ 5500 + LETO}}<br />отъ Великай Стужи<br />на Круголѣте Числобога
+          Лѣто {{ 5500 + LETO }}<br />отъ Великай Стужи<br />на Круголѣте
+          Числобога
         </th>
       </tr>
     </table>
@@ -29,6 +36,9 @@ export default {
   name: "Calendar",
   components: {
     Ramhat,
+  },
+  created: function () {
+    this.tekuschee_leto();
   },
   methods: {
     tekuschee_leto: function () {
@@ -70,21 +80,33 @@ export default {
             this.LETO = 5509 + current_grig_date.getFullYear();
           }
         }
-        // this.LETO_V_KRUGE_ZHIZNI = 777;
       }
+      this.update_leto_vars();
+    },
+    leto_vpered: function () {
+      if (this.LETO < 7664) {
+        this.LETO++;
+        this.update_leto_vars();
+      }
+    },
+    leto_nazad: function () {
+      if (this.LETO > 7521) {
+        this.LETO--;
+        this.update_leto_vars();
+      }
+    },
+    update_leto_vars: function () {
       this.LETO_V_KRUGE_ZHIZNI = this.LETO - 7520;
       this.LETO_V_KRUGE_LET = this.LETO_V_KRUGE_ZHIZNI % 16;
       if (this.LETO_V_KRUGE_LET == 0) {
         this.LETO_V_KRUGE_LET = 16;
+        this.SVYASCHENNOE_LETO = 1;
       }
-    },
-    beforeMount() {
-      this.tekuschee_leto();
     },
   },
   data() {
     return {
-      LETO: 1000,
+      LETO: 7521,
       SVYASCHENNOE_LETO: 0,
       LETO_V_KRUGE_ZHIZNI: 0,
       LETO_V_KRUGE_LET: 0,
@@ -244,4 +266,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.arrow {
+  cursor: pointer;
+}
 </style>
