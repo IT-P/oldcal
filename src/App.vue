@@ -1,5 +1,5 @@
 <template>
-  <OldCalMenu msg="Славянский календарь"/>
+  <old-cal-menu msg="Славянский календарь"/>
 </template>
 
 <script>

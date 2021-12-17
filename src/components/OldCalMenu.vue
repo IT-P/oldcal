@@ -15,8 +15,8 @@
       <li><a href="#" @click="toggleMenu">Вернуться к меню</a></li>
     </ul>
   </div>
-  <Calendar v-if="showCalendar" />
-  <Translator v-if="showTranslator" />
+  <calendar v-if="showCalendar" />
+  <translator v-if="showTranslator" />
 
 </template>
 

@@ -25,7 +25,7 @@
         </th>
       </tr>
     </table>
-    <Ramhat></Ramhat>
+    <ramhat v-bind:DenNachalaMesyaca="dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI-1]"></ramhat>
   </div>
 </template>
 
@@ -58,21 +58,21 @@ export default {
         }
         if (
           current_grig_date.getDate() <
-          this.den_nachala_leta[tmp_leto_v_kruge_let]
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let]
         ) {
           this.LETO = 5508 + current_grig_date.getFullYear();
         }
 
         if (
           current_grig_date.getDate() >
-          this.den_nachala_leta[tmp_leto_v_kruge_let]
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let]
         ) {
           this.LETO = 5509 + current_grig_date.getFullYear();
         }
 
         if (
           current_grig_date.getDate() ==
-          this.den_nachala_leta[tmp_leto_v_kruge_let]
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let]
         ) {
           if (current_grig_date.getHours() < 18) {
             this.LETO = 5508 + current_grig_date.getFullYear();
@@ -256,8 +256,16 @@ export default {
         "Божий Дом",
         "Священный Храм Бога",
       ],
-      den_nachala_leta: [
+      grig_den_nachala_leta: [
         23, 23, 23, 23, 22, 22, 22, 22, 21, 21, 21, 21, 20, 20, 20, 20,
+      ],
+      dni_nedeli_nachala_krugoleta: [
+        1, 6, 2, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 4, 9, 5, 1, 6, 2, 7, 3,
+        8, 4, 9, 5, 1, 6, 2, 7, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 9, 5, 1,
+        1, 6, 2, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 4, 9, 5, 1, 6, 2, 7, 3,
+        8, 4, 9, 5, 1, 6, 2, 7, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 9, 5, 1,
+        1, 6, 2, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 4, 9, 5, 1, 6, 2, 7, 3,
+        8, 4, 9, 5, 1, 6, 2, 7, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 9, 5, 1,
       ],
     };
   },
