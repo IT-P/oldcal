@@ -5,6 +5,7 @@
   </div>
   <setka-mesyaca
     :DenNachalaMesyaca="DenNachalaMesyaca"
+    :DenNachalaMesyacaGrig="DenNachalaMesyacaGrig"
     :KolichestvoDney="41"
     :Prazdniki="Prazdniki"
     :DniPredkov="DniPredkov"
@@ -19,6 +20,7 @@ export default {
   name: "Ramhat",
   props: {
     DenNachalaMesyaca: Number,
+    DenNachalaMesyacaGrig: String,
   },
   components: {
     SetkaMesyaca,

@@ -142,6 +142,7 @@
 export default {
   props: {
     DenNachalaMesyaca: Number,
+    DenNachalaMesyacaGrig: String,
     KolichestvoDney: Number,
     Prazdniki: Array(String),
     DniPredkov: Array,
@@ -151,6 +152,9 @@ export default {
   name: "SetkaMesyaca",
   methods: {
     init: function () {
+      var dateParts = this.DenNachalaMesyacaGrig.split(".");
+      var DateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+
       for (let i = 0; i < this.KolichestvoDney; i++) {
         let index = this.DenNachalaMesyaca - 1 + i;
         this.td_data[index] = i + 1;
@@ -166,15 +170,21 @@ export default {
         if (this.Post[i]) {
           this.td_style[index] += " post";
         }
+        var curDate = new Date(DateObject);
+        var nextDate = new Date(DateObject);
+        nextDate.setDate(nextDate.getDate() +1);
+        if(i == 0 || nextDate.getDate() == 1) {
+          this.td_style_grig[index] = "mesyac grig_mini";
+          this.td_data_grig[index] = curDate.getDate()+'.'+ (curDate.getMonth()+1);
+        }
+        else {
+          this.td_data_grig[index] = curDate.getDate()+'.'+ (curDate.getMonth()+1)+ '<hr/>' 
+          +nextDate.getDate()+'.'+ (nextDate.getMonth()+1);
+        }
+        DateObject.setDate(DateObject.getDate() +1);
       }
     },
     update: function () {
-      // for (let i = 0; i < 54; i++) {
-      //   this.td_data[i] = "\xa0";
-      //   this.td_data_grig[i] = "\xa0";
-      //   this.td_style[i] = "mesyac";
-      //   this.td_style_grig[i] = "mesyac grig";
-      // }
       this.td_data.fill("\xa0", 0, 53);
       this.td_data_grig.fill("\xa0", 0, 53);
       this.td_style.fill("mesyac", 0, 53);
@@ -196,7 +206,8 @@ export default {
   data() {
     return {
       td_data: Array(54).fill("\xa0", 0, 53),
-      td_data_grig: Array(54).fill("\xa0", 0, 53),
+      td_data_grig_top: Array(54).fill("\xa0", 0, 53),
+      td_data_grig_bottom: Array(54).fill("\xa0", 0, 53),
       td_style: Array(54).fill("mesyac", 0, 53),
       td_style_grig: Array(54).fill("mesyac grig", 0, 53),
     };
