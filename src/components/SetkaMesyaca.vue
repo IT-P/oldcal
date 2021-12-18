@@ -357,6 +357,7 @@
 <script>
 export default {
   props: {
+    Leto: Number,
     DenNachalaMesyaca: Number,
     DenNachalaMesyacaGrig: String,
     KolichestvoDney: Number,
@@ -429,7 +430,7 @@ export default {
     this.init();
   },
   watch: {
-    DenNachalaMesyaca: {
+    Leto: {
       handler: function () {
         this.update();
       },

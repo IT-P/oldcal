@@ -4,6 +4,7 @@
     <span class="subtitle">Месяц Вьюгъ и Стужи</span>
   </div>
   <setka-mesyaca
+    :Leto="Leto"
     :DenNachalaMesyaca="DenNachalaMesyaca"
     :DenNachalaMesyacaGrig="DenNachalaMesyacaGrig"
     :KolichestvoDney="KolichestvoDney"

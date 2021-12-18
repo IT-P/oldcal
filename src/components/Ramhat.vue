@@ -4,6 +4,7 @@
     <span class="subtitle">Месяц Божественнаго Начала</span>
   </div>
   <setka-mesyaca
+    :Leto="Leto"
     :DenNachalaMesyaca="DenNachalaMesyaca"
     :DenNachalaMesyacaGrig="DenNachalaMesyacaGrig"
     :KolichestvoDney="KolichestvoDney"

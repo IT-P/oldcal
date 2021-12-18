@@ -4,6 +4,7 @@
     <span class="subtitle">Месяц Пробужденiя Природы</span>
   </div>
   <setka-mesyaca
+    :Leto="Leto"
     :DenNachalaMesyaca="DenNachalaMesyaca"
     :DenNachalaMesyacaGrig="DenNachalaMesyacaGrig"
     :KolichestvoDney="KolichestvoDney"

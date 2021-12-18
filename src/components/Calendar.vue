@@ -635,6 +635,6 @@ export default {
 }
 
 .arrow:hover {
-  background: gold;
+  text-decoration: underline;
 }
 </style>

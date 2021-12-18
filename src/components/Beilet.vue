@@ -4,6 +4,7 @@
     <span class="subtitle">Месяц Белаго Сiянiя и Покоя Мiра</span>
   </div>
   <setka-mesyaca
+    :Leto="Leto"
     :DenNachalaMesyaca="DenNachalaMesyaca"
     :DenNachalaMesyacaGrig="DenNachalaMesyacaGrig"
     :KolichestvoDney="KolichestvoDney"
