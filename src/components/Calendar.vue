@@ -25,7 +25,7 @@
         </th>
       </tr>
     </table>
-    <ramhat v-bind:DenNachalaMesyaca="dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI-1]"></ramhat>
+    <ramhat :DenNachalaMesyaca="dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI-1]"></ramhat>
   </div>
 </template>
 
