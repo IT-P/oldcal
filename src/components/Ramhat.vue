@@ -24,7 +24,7 @@
     </tr>
     <tr>
       <td class="post square">&nbsp;</td>
-      <td>Святый ПОСТЪ: 23-31 {{ MESYAC }}</td>
+      <td>Святый ПОСТЪ: 23 - 31 {{ MESYAC }}</td>
     </tr>
     <tr>
       <td class="sedmica square">&nbsp;</td>

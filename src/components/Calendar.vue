@@ -38,20 +38,59 @@
     <br />
     <br />
     <div style="page-break-after: always"></div>
-    <ailet v-if="SVYASCHENNOE_LETO"
+    <ailet
+      v-if="SVYASCHENNOE_LETO"
       :Leto="LETO"
-      :DenNachalaMesyaca="nachalo_mesyaca_sv[dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]][1]"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_sv[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][1]
+      "
       :KolichestvoDney="kolichestvo_dney_v_mesyace[1]"
       :DenNachalaMesyacaGrig="
         leto_grig[LETO_V_KRUGE_LET][1] + '.' + (LETO - 5509)
       "
     />
-    <ailet v-else
+    <ailet
+      v-else
       :Leto="LETO"
-      :DenNachalaMesyaca="nachalo_mesyaca_prostoe[dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]][1]"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_prostoe[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][1]
+      "
       :KolichestvoDney="kolichestvo_dney_v_mesyace[1]"
       :DenNachalaMesyacaGrig="
         leto_grig[LETO_V_KRUGE_LET][1] + '.' + (LETO - 5509)
+      "
+    />
+    <br />
+    <br />
+    <div style="page-break-after: always"></div>
+    <beilet
+      v-if="SVYASCHENNOE_LETO"
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_sv[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][2]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[2]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][2] + '.' + (LETO - 5509)
+      "
+    />
+    <beilet
+      v-else
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_prostoe[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][2]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[2]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][2] + '.' + (LETO - 5509)
       "
     />
   </div>
@@ -60,12 +99,14 @@
 <script>
 import Ramhat from "./Ramhat.vue";
 import Ailet from "./Ailet.vue";
+import Beilet from "./Beilet.vue";
 
 export default {
   name: "Calendar",
   components: {
     Ramhat,
     Ailet,
+    Beilet,
   },
   created: function () {
     this.tekuschee_leto();
@@ -141,9 +182,7 @@ export default {
         this.kolichestvo_dney_v_mesyace[6] = 41;
         this.kolichestvo_dney_v_mesyace[7] = 41;
         this.kolichestvo_dney_v_mesyace[8] = 41;
-      }
-      else
-      {
+      } else {
         this.SVYASCHENNOE_LETO = 0;
         this.kolichestvo_dney_v_mesyace[0] = 41;
         this.kolichestvo_dney_v_mesyace[1] = 40;
