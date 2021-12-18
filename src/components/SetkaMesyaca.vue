@@ -398,7 +398,7 @@ export default {
           this.td_data_grig_top[index] =
             this.grig_month[nextDate.getMonth()] +
             "\n" +
-            curDate.getFullYear() +
+            nextDate.getFullYear() +
             "\n" +
             curDate.getDate() +
             " " +

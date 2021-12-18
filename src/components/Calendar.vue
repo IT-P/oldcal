@@ -106,7 +106,7 @@
       "
       :KolichestvoDney="kolichestvo_dney_v_mesyace[3]"
       :DenNachalaMesyacaGrig="
-        leto_grig[LETO_V_KRUGE_LET][3] + '.' + (LETO - 5509)
+        leto_grig[LETO_V_KRUGE_LET][3] + '.' + (LETO - 5508)
       "
     />
     <geilet
@@ -119,7 +119,36 @@
       "
       :KolichestvoDney="kolichestvo_dney_v_mesyace[3]"
       :DenNachalaMesyacaGrig="
-        leto_grig[LETO_V_KRUGE_LET][3] + '.' + (LETO - 5509)
+        leto_grig[LETO_V_KRUGE_LET][3] + '.' + (LETO - 5508)
+      "
+    />
+    <br />
+    <br />
+    <div style="page-break-after: always"></div>
+    <dailet
+      v-if="SVYASCHENNOE_LETO"
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_sv[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][4]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[4]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][4] + '.' + (LETO - 5508)
+      "
+    />
+    <dailet
+      v-else
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_prostoe[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][4]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[4]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][4] + '.' + (LETO - 5508)
       "
     />
   </div>
@@ -130,6 +159,7 @@ import Ramhat from "./Ramhat.vue";
 import Ailet from "./Ailet.vue";
 import Beilet from "./Beilet.vue";
 import Geilet from "./Geilet.vue";
+import Dailet from './Dailet.vue'
 
 export default {
   name: "Calendar",
@@ -138,6 +168,7 @@ export default {
     Ailet,
     Beilet,
     Geilet,
+    Dailet,
   },
   created: function () {
     this.tekuschee_leto();
