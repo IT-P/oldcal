@@ -93,6 +93,35 @@
         leto_grig[LETO_V_KRUGE_LET][2] + '.' + (LETO - 5509)
       "
     />
+    <br />
+    <br />
+    <div style="page-break-after: always"></div>
+    <geilet
+      v-if="SVYASCHENNOE_LETO"
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_sv[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][3]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[3]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][3] + '.' + (LETO - 5509)
+      "
+    />
+    <geilet
+      v-else
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_prostoe[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][3]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[3]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][3] + '.' + (LETO - 5509)
+      "
+    />
   </div>
 </template>
 
@@ -100,6 +129,7 @@
 import Ramhat from "./Ramhat.vue";
 import Ailet from "./Ailet.vue";
 import Beilet from "./Beilet.vue";
+import Geilet from "./Geilet.vue";
 
 export default {
   name: "Calendar",
@@ -107,6 +137,7 @@ export default {
     Ramhat,
     Ailet,
     Beilet,
+    Geilet,
   },
   created: function () {
     this.tekuschee_leto();
