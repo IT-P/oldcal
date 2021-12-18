@@ -28,19 +28,44 @@
       </tr>
     </table>
     <ramhat
+      :Leto="LETO"
       :DenNachalaMesyaca="dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]"
-      :DenNachalaMesyacaGrig="leto_grig[LETO_V_KRUGE_LET][0]+'.'+(LETO-5509)"
-    ></ramhat>
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[0]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][0] + '.' + (LETO - 5509)
+      "
+    />
+    <br />
+    <br />
+    <div style="page-break-after: always"></div>
+    <ailet v-if="SVYASCHENNOE_LETO"
+      :Leto="LETO"
+      :DenNachalaMesyaca="nachalo_mesyaca_sv[dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]][1]"
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[1]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][1] + '.' + (LETO - 5509)
+      "
+    />
+    <ailet v-else
+      :Leto="LETO"
+      :DenNachalaMesyaca="nachalo_mesyaca_prostoe[dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]][1]"
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[1]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][1] + '.' + (LETO - 5509)
+      "
+    />
   </div>
 </template>
 
 <script>
 import Ramhat from "./Ramhat.vue";
+import Ailet from "./Ailet.vue";
 
 export default {
   name: "Calendar",
   components: {
     Ramhat,
+    Ailet,
   },
   created: function () {
     this.tekuschee_leto();
@@ -107,6 +132,28 @@ export default {
       if (this.LETO_V_KRUGE_LET == 0) {
         this.LETO_V_KRUGE_LET = 16;
         this.SVYASCHENNOE_LETO = 1;
+        this.kolichestvo_dney_v_mesyace[0] = 41;
+        this.kolichestvo_dney_v_mesyace[1] = 41;
+        this.kolichestvo_dney_v_mesyace[2] = 41;
+        this.kolichestvo_dney_v_mesyace[3] = 41;
+        this.kolichestvo_dney_v_mesyace[4] = 41;
+        this.kolichestvo_dney_v_mesyace[5] = 41;
+        this.kolichestvo_dney_v_mesyace[6] = 41;
+        this.kolichestvo_dney_v_mesyace[7] = 41;
+        this.kolichestvo_dney_v_mesyace[8] = 41;
+      }
+      else
+      {
+        this.SVYASCHENNOE_LETO = 0;
+        this.kolichestvo_dney_v_mesyace[0] = 41;
+        this.kolichestvo_dney_v_mesyace[1] = 40;
+        this.kolichestvo_dney_v_mesyace[2] = 41;
+        this.kolichestvo_dney_v_mesyace[3] = 40;
+        this.kolichestvo_dney_v_mesyace[4] = 41;
+        this.kolichestvo_dney_v_mesyace[5] = 40;
+        this.kolichestvo_dney_v_mesyace[6] = 41;
+        this.kolichestvo_dney_v_mesyace[7] = 40;
+        this.kolichestvo_dney_v_mesyace[8] = 41;
       }
     },
   },
@@ -266,6 +313,7 @@ export default {
       grig_den_nachala_leta: [
         23, 23, 23, 23, 22, 22, 22, 22, 21, 21, 21, 21, 20, 20, 20, 20,
       ],
+      kolichestvo_dney_v_mesyace: [41, 40, 41, 40, 41, 40, 41, 40, 41],
       dni_nedeli_nachala_krugoleta: [
         1, 6, 2, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 4, 9, 5, 1, 6, 2, 7, 3,
         8, 4, 9, 5, 1, 6, 2, 7, 7, 3, 8, 4, 9, 5, 1, 6, 2, 7, 3, 8, 4, 9, 5, 1,
@@ -485,5 +533,7 @@ export default {
   cursor: pointer;
 }
 
-.arrow:hover { background: gold; }
+.arrow:hover {
+  background: gold;
+}
 </style>
