@@ -180,6 +180,35 @@
         leto_grig[LETO_V_KRUGE_LET][5] + '.' + (LETO - 5508)
       "
     />
+    <br />
+    <br />
+    <div style="page-break-after: always"></div>
+    <veilet
+      v-if="SVYASCHENNOE_LETO"
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_sv[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][6]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[6]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][6] + '.' + (LETO - 5508)
+      "
+    />
+    <veilet
+      v-else
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_prostoe[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][6]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[6]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][6] + '.' + (LETO - 5508)
+      "
+    />
   </div>
 </template>
 
@@ -190,6 +219,7 @@ import Beilet from "./Beilet.vue";
 import Geilet from "./Geilet.vue";
 import Dailet from "./Dailet.vue";
 import Elet from "./Elet.vue";
+import Veilet from "./Veilet.vue";
 
 export default {
   name: "Calendar",
@@ -200,6 +230,7 @@ export default {
     Geilet,
     Dailet,
     Elet,
+    Veilet,
   },
   created: function () {
     this.tekuschee_leto();
