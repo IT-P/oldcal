@@ -12,6 +12,7 @@
     :DniPredkov="DniPredkov"
     :RoditelskieDni="RoditelskieDni"
     :Post="Post"
+    :DopolnitelnyeStili="DopolnitelnyeStili"
   ></setka-mesyaca>
   <br />
   <table border="0" class="legenda">
@@ -21,9 +22,7 @@
     </tr>
     <tr>
       <td class="roditelskie_dni square">&nbsp;</td>
-      <td>
-        Родительские дни: 22, 33, 37, 40 {{ MESYAC }}
-      </td>
+      <td>Родительские дни: 22, 33, 37, 40 {{ MESYAC }}</td>
     </tr>
     <tr>
       <td class="post square">&nbsp;</td>
@@ -37,13 +36,13 @@
   <br />
   <div class="red">Славяно-Арийckiя праzдниkи на месяц {{ MESYAC }}</div>
   <div class="spisok_prazdnikov">
-    <span class="red">2</span>&nbsp;-&nbsp;День&nbsp;Винитара&nbsp;Воителя 
-    <span class="red">7</span>&nbsp;-&nbsp;День&nbsp;Горислава&nbsp;Мученика 
-    <span class="red">12</span>&nbsp;-&nbsp;День&nbsp;Светоzара&nbsp;Вечнаго 
-    <span class="red">17</span>&nbsp;-&nbsp;День&nbsp;Харiя&nbsp;Правѣднаго 
-    <span class="red">22</span>&nbsp;-&nbsp;День&nbsp;Рамхата&nbsp;Странниkа 
-    <span class="red">37</span>&nbsp;-&nbsp;День&nbsp;БОГА&nbsp;ВЬЛЕСА 
-    <span class="red">40</span>&nbsp;-&nbsp;День&nbsp;Храма&nbsp;Души 
+    <span class="red">2</span>&nbsp;-&nbsp;День&nbsp;Винитара&nbsp;Воителя
+    <span class="red">7</span>&nbsp;-&nbsp;День&nbsp;Горислава&nbsp;Мученика
+    <span class="red">12</span>&nbsp;-&nbsp;День&nbsp;Светоzара&nbsp;Вечнаго
+    <span class="red">17</span>&nbsp;-&nbsp;День&nbsp;Харiя&nbsp;Правѣднаго
+    <span class="red">22</span>&nbsp;-&nbsp;День&nbsp;Рамхата&nbsp;Странниkа
+    <span class="red">37</span>&nbsp;-&nbsp;День&nbsp;БОГА&nbsp;ВЬЛЕСА
+    <span class="red">40</span>&nbsp;-&nbsp;День&nbsp;Храма&nbsp;Души
   </div>
 </template>
 
@@ -143,6 +142,49 @@ export default {
         1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
       ],
       OdnodnevnyPost: "",
+      DopolnitelnyeStili: [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
     };
   },
 };
@@ -150,7 +192,7 @@ export default {
 
 <style scoped>
 .square {
-  width: 1em;
-  height: 1em;
+  width: 1.3em;
+  height: 1.3em;
 }
 </style>

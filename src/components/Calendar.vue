@@ -209,6 +209,64 @@
         leto_grig[LETO_V_KRUGE_LET][6] + '.' + (LETO - 5508)
       "
     />
+    <br />
+    <br />
+    <div style="page-break-after: always"></div>
+    <heilet
+      v-if="SVYASCHENNOE_LETO"
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_sv[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][7]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[7]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][7] + '.' + (LETO - 5508)
+      "
+    />
+    <heilet
+      v-else
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_prostoe[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][7]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[7]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][7] + '.' + (LETO - 5508)
+      "
+    />
+    <br />
+    <br />
+    <div style="page-break-after: always"></div>
+    <tailet
+      v-if="SVYASCHENNOE_LETO"
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_sv[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][8]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[8]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][8] + '.' + (LETO - 5508)
+      "
+    />
+    <tailet
+      v-else
+      :Leto="LETO"
+      :DenNachalaMesyaca="
+        nachalo_mesyaca_prostoe[
+          dni_nedeli_nachala_krugoleta[LETO_V_KRUGE_ZHIZNI - 1]
+        ][8]
+      "
+      :KolichestvoDney="kolichestvo_dney_v_mesyace[8]"
+      :DenNachalaMesyacaGrig="
+        leto_grig[LETO_V_KRUGE_LET][8] + '.' + (LETO - 5508)
+      "
+    />
   </div>
 </template>
 
@@ -220,6 +278,8 @@ import Geilet from "./Geilet.vue";
 import Dailet from "./Dailet.vue";
 import Elet from "./Elet.vue";
 import Veilet from "./Veilet.vue";
+import Heilet from "./Heilet.vue";
+import Tailet from "./Tailet.vue";
 
 export default {
   name: "Calendar",
@@ -231,6 +291,8 @@ export default {
     Dailet,
     Elet,
     Veilet,
+    Heilet,
+    Tailet,
   },
   created: function () {
     this.tekuschee_leto();

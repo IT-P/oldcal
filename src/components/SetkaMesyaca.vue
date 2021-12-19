@@ -365,6 +365,7 @@ export default {
     DniPredkov: Array,
     RoditelskieDni: Array,
     Post: Array,
+    DopolnitelnyeStili: Array(String),
   },
   name: "SetkaMesyaca",
   methods: {
@@ -375,6 +376,9 @@ export default {
       for (let i = 0; i < this.KolichestvoDney; i++) {
         let index = this.DenNachalaMesyaca - 1 + i;
         this.td_data[index] = i + 1;
+        if (this.DopolnitelnyeStili[i].length > 0) {
+          this.td_style[index] += " " + this.DopolnitelnyeStili[i];
+        }
         if (this.Prazdniki[i].length > 0) {
           this.td_style[index] += " red";
         }

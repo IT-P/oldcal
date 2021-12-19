@@ -12,6 +12,7 @@
     :DniPredkov="DniPredkov"
     :RoditelskieDni="RoditelskieDni"
     :Post="Post"
+    :DopolnitelnyeStili="DopolnitelnyeStili"
   ></setka-mesyaca>
   <br />
   <table border="0" class="legenda">
@@ -149,6 +150,49 @@ export default {
         1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
       ],
       OdnodnevnyPost: "",
+      DopolnitelnyeStili: [
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+        "",
+      ],
     };
   },
 };
@@ -156,7 +200,7 @@ export default {
 
 <style scoped>
 .square {
-  width: 1em;
-  height: 1em;
+  width: 1.3em;
+  height: 1.3em;
 }
 </style>
