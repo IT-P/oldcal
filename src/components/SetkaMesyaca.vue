@@ -372,6 +372,7 @@ export default {
     init: function () {
       var dateParts = this.DenNachalaMesyacaGrig.split(".");
       var DateObject = new Date(+dateParts[2], dateParts[1] - 1, +dateParts[0]);
+      DateObject.setDate(DateObject.getDate() - 1);
 
       for (let i = 0; i < this.KolichestvoDney; i++) {
         let index = this.DenNachalaMesyaca - 1 + i;
