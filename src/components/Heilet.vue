@@ -34,7 +34,10 @@
     </tr>
     <tr>
       <td class="sedmica square">&nbsp;</td>
-      <td>Однодневный ПОСТЪ: {{ OdnodnevnyPost }} {{ MESYAC }}</td>
+      <td>
+        Однодневный ПОСТЪ - каждая Седьмица (кроме праздничных дней):
+        {{ OdnodnevnyPost }} {{ MESYAC }}
+      </td>
     </tr>
     <tr>
       <td class="zhatva square">&nbsp;</td>
