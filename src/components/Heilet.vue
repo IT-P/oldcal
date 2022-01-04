@@ -58,7 +58,7 @@
     <span class="red">9</span>&nbsp;-&nbsp;День&nbsp;Великай&nbsp;Инглiи
     <span class="red">13</span>&nbsp;-&nbsp;День&nbsp;Александра&nbsp;Странниkа
     <span class="red">17</span>&nbsp;-&nbsp;День&nbsp;Земли&nbsp;Свята&nbsp;Расы
-    <span class="red">18</span>&nbsp;-&nbsp;День&nbsp;Орея&nbsp;Вендагарскаго
+    <span class="red">18</span>&nbsp;-&nbsp;День&nbsp;Орея&nbsp;Вендагардскаго
     <span class="red">21</span>&nbsp;-&nbsp;ПЕРУНИЦА
     <span class="red">22</span>&nbsp;-&nbsp;День&nbsp;Сбора&nbsp;Плодовъ
     <span class="red">27</span>&nbsp;-&nbsp;День&nbsp;БОГА&nbsp;УДРЗЕЦА
@@ -137,7 +137,7 @@ export default {
         "",
         "",
         "День Земли Свята Расы",
-        "День Орея Вендагарскаго",
+        "День Орея Вендагардскаго",
         "",
         "",
         "ПЕРУНИЦА",

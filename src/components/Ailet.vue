@@ -46,7 +46,7 @@
     <span class="red">25</span
     >&nbsp;-&nbsp;День&nbsp;СВАРОГА&nbsp;и&nbsp;СЕМАРГЛА
     <span class="red">29</span
-    >&nbsp;-&nbsp;День&nbsp;Мирослава&nbsp;Мироустроителя
+    >&nbsp;-&nbsp;День&nbsp;Ярослава&nbsp;Мироустроителя
     <span class="red">32</span>&nbsp;-&nbsp;День&nbsp;Хорива&nbsp;Мудраго
     <span class="red">36</span>&nbsp;-&nbsp;День&nbsp;Олега&nbsp;Правѣднаго
   </div>
@@ -129,7 +129,7 @@ export default {
         "",
         "",
         "",
-        "День Мирослава Мироустроителя",
+        "День Ярослава Мироустроителя",
         "",
         "",
         "День Хорива Мудраго",

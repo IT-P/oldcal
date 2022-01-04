@@ -53,7 +53,7 @@
     <span class="red">31</span>&nbsp;-&nbsp;День&nbsp;Моисiя&nbsp;Волхва
     <span class="red">36</span>&nbsp;-&nbsp;День&nbsp;Сканда&nbsp;Ирiйскаго
     <span class="red">38</span>&nbsp;-&nbsp;День&nbsp;БОГИНИ&nbsp;РОЖАНЫ
-    <span class="red">40</span>&nbsp;-&nbsp;Дидовъ&nbsp;День
+    <span class="red">40</span>&nbsp;-&nbsp;День&nbsp;Мудрых&nbsp;Странников
   </div>
 </template>
 
@@ -145,7 +145,7 @@ export default {
         "",
         "День БОГИНИ РОЖАНЫ",
         "",
-        "Дидовъ День",
+        "День Мудрых Странников",
         "",
       ],
       DniPredkov: [

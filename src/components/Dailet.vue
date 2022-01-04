@@ -57,7 +57,7 @@
     <span class="red">31</span>&nbsp;-&nbsp;День&nbsp;Ратислава&nbsp;Асгардскаго
     <span class="red">32</span>&nbsp;-&nbsp;День&nbsp;Руслана&nbsp;Воителя
     <span class="red">33</span>&nbsp;-&nbsp;День&nbsp;Одина&nbsp;Асгардскаго
-    <span class="red">34</span>&nbsp;-&nbsp;День&nbsp;Тора&nbsp;Свенторарскаго
+    <span class="red">34</span>&nbsp;-&nbsp;День&nbsp;Тора&nbsp;Свентогардскаго
     <span class="red">35</span>&nbsp;-&nbsp;День&nbsp;Памяти&nbsp;Предковъ
     <span class="red">36</span>&nbsp;-&nbsp;ПАСХЕТЪ
     <span class="red">37</span>&nbsp;-&nbsp;День&nbsp;МИТРЫ
@@ -148,7 +148,7 @@ export default {
         "День Ратислава Асгардскаго",
         "День Руслана Воителя",
         "День Одина Асгардскаго",
-        "День Тора Свенторарскаго",
+        "День Тора Свентогардскаго",
         "День Памяти Предковъ",
         "ПАСХЕТЪ",
         "День МИТРЫ",

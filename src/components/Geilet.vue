@@ -46,6 +46,7 @@
     <span class="red">12</span>&nbsp;-&nbsp;День&nbsp;Светоzара&nbsp;Вечнаго
     <span class="red">17</span>&nbsp;-&nbsp;День&nbsp;Харiя&nbsp;Правѣднаго
     <span class="red">22</span>&nbsp;-&nbsp;День&nbsp;Рамхата&nbsp;Странниkа
+    <span class="red">33</span>&nbsp;-&nbsp;День&nbsp;Дида
     <span class="red">37</span>&nbsp;-&nbsp;День&nbsp;БОГА&nbsp;ВЬЛЕСА
     <span class="red">40</span>&nbsp;-&nbsp;День&nbsp;Храма&nbsp;Души
   </div>
@@ -132,7 +133,7 @@ export default {
         "",
         "",
         "",
-        "",
+        "День Дида",
         "",
         "",
         "",
