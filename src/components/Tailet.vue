@@ -36,22 +36,23 @@
   <br />
   <div class="red">Славяно-Арийckiя праzдниkи на месяц {{ MESYAC }}</div>
   <div class="spisok_prazdnikov">
-    <span class="red">3</span>&nbsp;-&nbsp;День&nbsp;Ворона&nbsp;ВАРУНЫ 
-    <span class="red">6</span>&nbsp;-&nbsp;День&nbsp;Александра&nbsp;Мудраго 
-    <span class="red">9</span>&nbsp;-&nbsp;День&nbsp;ТРЕХЪ&nbsp;ЛУНЪ 
-    <span class="red">12</span>&nbsp;-&nbsp;День&nbsp;Скiфия&nbsp;Волхва 
-    <span class="red">16</span>&nbsp;-&nbsp;День&nbsp;Димитрiя&nbsp;Основателя 
-    <span class="red">18</span>&nbsp;-&nbsp;День&nbsp;СТРИБОГА 
-    <span class="red">21</span>&nbsp;-&nbsp;Златогорка 
-    <span class="red">22</span>&nbsp;-&nbsp;Любомиръ 
-    <span class="red">24</span>&nbsp;-&nbsp;День&nbsp;Свентослава&nbsp;Асгардскаго 
-    <span class="red">27</span>&nbsp;-&nbsp;ДЖИВА-ИНТА 
-    <span class="red">29</span>&nbsp;-&nbsp;День&nbsp;ЖЕЛИ 
-    <span class="red">31</span>&nbsp;-&nbsp;День&nbsp;Святослва&nbsp;Правѣднаго 
-    <span class="red">33</span>&nbsp;-&nbsp;Сеченникъ 
-    <span class="red">35</span>&nbsp;-&nbsp;День&nbsp;Богини&nbsp;КАРНЫ 
-    <span class="red">38</span>&nbsp;-&nbsp;День&nbsp;Свѣтоzара&nbsp;Странниkа 
-    <span class="red">41</span>&nbsp;-&nbsp;День&nbsp;Александра&nbsp;Вещего 
+    <span class="red">3</span>&nbsp;-&nbsp;День&nbsp;Ворона&nbsp;ВАРУНЫ
+    <span class="red">6</span>&nbsp;-&nbsp;День&nbsp;Александра&nbsp;Мудраго
+    <span class="red">9</span>&nbsp;-&nbsp;День&nbsp;ТРЕХЪ&nbsp;ЛУНЪ
+    <span class="red">12</span>&nbsp;-&nbsp;День&nbsp;Скiфия&nbsp;Волхва
+    <span class="red">16</span>&nbsp;-&nbsp;День&nbsp;Димитрiя&nbsp;Основателя
+    <span class="red">18</span>&nbsp;-&nbsp;День&nbsp;СТРИБОГА
+    <span class="red">21</span>&nbsp;-&nbsp;Златогорка
+    <span class="red">22</span>&nbsp;-&nbsp;Любомиръ
+    <span class="red">24</span
+    >&nbsp;-&nbsp;День&nbsp;Свентослава&nbsp;Асгардскаго
+    <span class="red">27</span>&nbsp;-&nbsp;ДЖИВА-ИНТА
+    <span class="red">29</span>&nbsp;-&nbsp;День&nbsp;ЖЕЛИ
+    <span class="red">31</span>&nbsp;-&nbsp;День&nbsp;Святослва&nbsp;Правѣднаго
+    <span class="red">33</span>&nbsp;-&nbsp;Сеченникъ
+    <span class="red">35</span>&nbsp;-&nbsp;День&nbsp;Богини&nbsp;КАРНЫ
+    <span class="red">38</span>&nbsp;-&nbsp;День&nbsp;Свѣтоzара&nbsp;Странниkа
+    <span class="red">41</span>&nbsp;-&nbsp;День&nbsp;Александра&nbsp;Вещего
   </div>
 </template>
 
@@ -86,9 +87,17 @@ export default {
       if (first_sedmica < 1) {
         first_sedmica = first_sedmica + 9;
       }
-      this.OdnodnevnyPost += first_sedmica;
+      if (this.Prazdniki[first_sedmica - 1].length == 0) {
+        this.OdnodnevnyPost += first_sedmica;
+      }
       for (let i = first_sedmica + 9; i < this.KolichestvoDney + 1; i = i + 9) {
-        this.OdnodnevnyPost += ", " + i;
+        if (this.Prazdniki[i - 1].length == 0) {
+          if (this.OdnodnevnyPost.length > 0) {
+            this.OdnodnevnyPost += ", " + i;
+          } else {
+            this.OdnodnevnyPost += i;
+          }
+        }
       }
     },
   },

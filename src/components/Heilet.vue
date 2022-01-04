@@ -99,9 +99,17 @@ export default {
       if (first_sedmica < 1) {
         first_sedmica = first_sedmica + 9;
       }
-      this.OdnodnevnyPost += first_sedmica;
+      if (this.Prazdniki[first_sedmica - 1].length == 0) {
+        this.OdnodnevnyPost += first_sedmica;
+      }
       for (let i = first_sedmica + 9; i < this.KolichestvoDney + 1; i = i + 9) {
-        this.OdnodnevnyPost += ", " + i;
+        if (this.Prazdniki[i - 1].length == 0) {
+          if (this.OdnodnevnyPost.length > 0) {
+            this.OdnodnevnyPost += ", " + i;
+          } else {
+            this.OdnodnevnyPost += i;
+          }
+        }
       }
     },
   },
