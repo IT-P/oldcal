@@ -22,9 +22,11 @@
     </tr>
     <tr>
       <td class="roditelskie_dni square">&nbsp;</td>
-      <td>
-        Родительские дни: 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 {{ MESYAC }}
-      </td>
+      <td>Родительские дни: 23 - 32 {{ MESYAC }}</td>
+    </tr>
+    <tr>
+      <td class="nedelya_predkov square">&nbsp;</td>
+      <td>Недѣля Памяти и Почитанiя Предковъ: 23 - 32 {{ MESYAC }}</td>
     </tr>
     <tr>
       <td class="post square">&nbsp;</td>
@@ -183,16 +185,16 @@ export default {
         "",
         "",
         "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
+        "nedelya_predkov",
         "",
         "",
         "",
