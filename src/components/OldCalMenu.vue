@@ -1,18 +1,16 @@
 <template>
-  <div id="logo" v-if="showMainMenu">
-    <img alt="Old calendar logo" src="../assets/simbol-valkirija.png" >
-  </div>
   <div class="menu" v-if="showMainMenu">
     <h1>{{ msg }}</h1>
+    <img alt="Old calendar logo" src="../assets/simbol-valkirija.png" >
     <h3>Меню</h3>
     <ul>
-      <li><a href="#" @click="toggleCalendar">Календарь</a></li>
-      <li><a href="#" @click="toggleTranslator">Перевод дат</a></li>
+      <li class="menu_link" @click="toggleCalendar">Календарь</li>
+      <li class="menu_link" @click="toggleTranslator">Перевод дат</li>
     </ul>
   </div>
   <div class="menu" v-if="showSmallMenu">
     <ul>
-      <li><a href="#" @click="toggleMenu">Вернуться к меню</a></li>
+      <li class="menu_link" @click="toggleMenu">Вернуться к меню</li>
     </ul>
   </div>
   <calendar v-if="showCalendar" />
@@ -77,8 +75,12 @@ li {
   display: inline-block;
   margin: 0 10px;
 }
-a {
+.menu_link {
   color: #42b983;
+  cursor: pointer;
+}
+.menu_link:hover {
+  text-decoration: underline;
 }
 #logo {
     padding-top: 60px;
