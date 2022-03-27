@@ -142,3 +142,21 @@ td.legenda {
     transparent 50%
   );
 }
+
+button {
+  color: #42b983;
+  font-size: 14pt;
+  font-family: "CyrillicOld";
+  background-color: white;
+  display: inline-block;
+  border-color: #42b983;
+  border-radius: 5px;
+
+}
+
+button:hover {
+  background-color: rgb(246, 255, 175);
+  cursor: pointer;
+  text-decoration: underline;
+  box-shadow: 5px;
+}

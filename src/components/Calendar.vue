@@ -1,13 +1,13 @@
 <template>
   <div align="center">
     <div>
-      <span class="arrow" @click="leto_nazad()">&laquo;</span>
+      <button @click="leto_nazad()">&laquo;</button>
       &nbsp;&nbsp;
-      <span class="arrow" @click="tekuschee_leto()"
-        >Текущее лето ({{ TEKUSCHEE_LETO }})</span
-      >
+      <button @click="tekuschee_leto()">
+        Текущее лето ({{ TEKUSCHEE_LETO }})
+      </button>
       &nbsp;&nbsp;
-      <span class="arrow" @click="leto_vpered()">&raquo;</span>
+      <button @click="leto_vpered()">&raquo;</button>
     </div>
     <h1>Коляды Даръ {{ LETO }}</h1>
     <table border="0" class="zagolovok" width="800px">
@@ -277,7 +277,7 @@
 
 <script>
 import nazvaniyeLeta from "../js/NazvaniyaLet.js";
-import opisaniyeLeta from "../js/OpisaniyaLet.js"
+import opisaniyeLeta from "../js/OpisaniyaLet.js";
 import Ramhat from "./Ramhat.vue";
 import Ailet from "./Ailet.vue";
 import Beilet from "./Beilet.vue";
@@ -306,10 +306,10 @@ export default {
   },
   methods: {
     nazvaniye_leta: function (leto) {
-      return(nazvaniyeLeta(leto));
+      return nazvaniyeLeta(leto);
     },
     opisaniye_leta: function (leto) {
-      return(opisaniyeLeta(leto));
+      return opisaniyeLeta(leto);
     },
     tekuschee_leto: function () {
       const current_grig_date = new Date();
