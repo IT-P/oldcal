@@ -278,6 +278,8 @@
 <script>
 import nazvaniyeLeta from "../js/NazvaniyaLet.js";
 import opisaniyeLeta from "../js/OpisaniyaLet.js";
+// import grig_den_nachala_leta from "../js/DateTranslate.js"
+// import tekuscheeLeto from "../js/DateTranslate.js"
 import Ramhat from "./Ramhat.vue";
 import Ailet from "./Ailet.vue";
 import Beilet from "./Beilet.vue";
