@@ -160,3 +160,13 @@ button:hover {
   text-decoration: underline;
   box-shadow: 5px;
 }
+
+.menu_link {
+  color: #42b983;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.menu_link:hover {
+  text-decoration: underline;
+}

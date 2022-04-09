@@ -1,16 +1,11 @@
 <template>
-  <old-cal-menu msg="Славянский календарь"/>
+  <router-view></router-view>
 </template>
 
 <script>
-import OldCalMenu from './components/OldCalMenu.vue'
-
 export default {
-  name: 'App',
-  components: {
-    OldCalMenu
-  }
-}
+  name: "App",
+};
 </script>
 
 <style lang="css" src="./assets/calendar.css"></style>
