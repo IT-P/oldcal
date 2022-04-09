@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="title red">{{ MESYAC }} ({{ Leto }})</span><br />
-    <span class="subtitle">Месяц Завершенiя</span>
+    <span class="subtitle">{{ MESYAC_OPISANIE }}</span>
   </div>
   <setka-mesyaca
     :Leto="Leto"
@@ -47,8 +47,7 @@
     <span class="red">18</span>&nbsp;-&nbsp;День&nbsp;СТРИБОГА
     <span class="red">21</span>&nbsp;-&nbsp;Златогорка
     <span class="red">22</span>&nbsp;-&nbsp;Любомиръ
-    <span class="red">24</span
-    >&nbsp;-&nbsp;День&nbsp;Свентослава&nbsp;Асгардскаго
+    <span class="red">24</span>&nbsp;-&nbsp;День&nbsp;Свентослава&nbsp;Асгардскаго
     <span class="red">27</span>&nbsp;-&nbsp;ДЖИВА-ИНТА
     <span class="red">29</span>&nbsp;-&nbsp;День&nbsp;ЖЕЛИ
     <span class="red">31</span>&nbsp;-&nbsp;День&nbsp;Святослва&nbsp;Правѣднаго
@@ -60,6 +59,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import store from "../store";
 import SetkaMesyaca from "./SetkaMesyaca.vue";
 export default {
   name: "Tailet",
@@ -82,6 +83,17 @@ export default {
       },
     },
   },
+  computed: {
+    ...mapState({
+      MESYAC: (state) => state.Tailet.MESYAC,
+      MESYAC_OPISANIE: (state) => state.Tailet.MESYAC_OPISANIE,
+      Prazdniki: (state) => state.Tailet.Prazdniki,
+      DniPredkov: (state) => state.Tailet.DniPredkov,
+      RoditelskieDni: (state) => state.Tailet.RoditelskieDni,
+      Post: (state) => state.Tailet.Post,
+      DopolnitelnyeStili: (state) => state.Tailet.DopolnitelnyeStili,
+    }),
+  },
   methods: {
     sedmicy: function () {
       this.OdnodnevnyPost = "";
@@ -90,11 +102,11 @@ export default {
       if (first_sedmica < 1) {
         first_sedmica = first_sedmica + 9;
       }
-      if (this.Prazdniki[first_sedmica - 1].length == 0) {
+      if (store.state.Tailet.Prazdniki[first_sedmica - 1].length == 0) {
         this.OdnodnevnyPost += first_sedmica;
       }
       for (let i = first_sedmica + 9; i < this.KolichestvoDney + 1; i = i + 9) {
-        if (this.Prazdniki[i - 1].length == 0) {
+        if (store.state.Tailet.Prazdniki[i - 1].length == 0) {
           if (this.OdnodnevnyPost.length > 0) {
             this.OdnodnevnyPost += ", " + i;
           } else {
@@ -106,106 +118,7 @@ export default {
   },
   data() {
     return {
-      MESYAC: "Тайлѣтъ",
-      Prazdniki: [
-        "",
-        "",
-        "День Ворона ВАРУНЫ",
-        "",
-        "",
-        "День Александра Мудраго",
-        "",
-        "",
-        "День ТРЕХЪ ЛУНЪ",
-        "",
-        "",
-        "День Скiфия Волхва",
-        "",
-        "",
-        "",
-        "День Димитрiя Основателя",
-        "",
-        "День СТРИБОГА",
-        "",
-        "",
-        "Златогорка",
-        "Любомиръ",
-        "",
-        "День Свентослава Асгардскаго",
-        "",
-        "",
-        "ДЖИВА-ИНТА",
-        "",
-        "День ЖЕЛИ",
-        "",
-        "День Святослва Правѣднаго",
-        "",
-        "Сеченникъ",
-        "",
-        "День Богини КАРНЫ",
-        "",
-        "",
-        "День Свѣтоzара Странниkа",
-        "",
-        "",
-        "День Александра Вещего",
-      ],
-      DniPredkov: [
-        0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-      ],
-      RoditelskieDni: [
-        0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-        0, 0, 1, 0, 1, 0, 0, 0, 1, 0, 1, 0, 0, 0, 0, 0, 0,
-      ],
-      Post: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      ],
       OdnodnevnyPost: "",
-      DopolnitelnyeStili: [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "zhatva",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-      ],
     };
   },
 };

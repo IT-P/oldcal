@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="title red">{{ MESYAC }} ({{ Leto }})</span><br />
-    <span class="subtitle">Месяц Вьюгъ и Стужи</span>
+    <span class="subtitle">{{ MESYAC_OPISANIE }}</span>
   </div>
   <setka-mesyaca
     :Leto="Leto"
@@ -31,9 +31,7 @@
     <tr>
       <td class="sedmica square">&nbsp;</td>
       <td>
-        Однодневный ПОСТЪ - каждая Седьмица (кроме праздничных дней):{{
-          OdnodnevnyPost
-        }}
+        Однодневный ПОСТЪ - каждая Седьмица (кроме праздничных дней):{{ OdnodnevnyPost }}
         {{ MESYAC }}
       </td>
     </tr>
@@ -53,6 +51,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import store from "../store";
 import SetkaMesyaca from "./SetkaMesyaca.vue";
 export default {
   name: "Geilet",
@@ -75,6 +75,17 @@ export default {
       },
     },
   },
+  computed: {
+    ...mapState({
+      MESYAC: (state) => state.Geilet.MESYAC,
+      MESYAC_OPISANIE: (state) => state.Geilet.MESYAC_OPISANIE,
+      Prazdniki: (state) => state.Geilet.Prazdniki,
+      DniPredkov: (state) => state.Geilet.DniPredkov,
+      RoditelskieDni: (state) => state.Geilet.RoditelskieDni,
+      Post: (state) => state.Geilet.Post,
+      DopolnitelnyeStili: (state) => state.Geilet.DopolnitelnyeStili,
+    }),
+  },
   methods: {
     sedmicy: function () {
       this.OdnodnevnyPost = "";
@@ -83,11 +94,11 @@ export default {
       if (first_sedmica < 1) {
         first_sedmica = first_sedmica + 9;
       }
-      if (this.Prazdniki[first_sedmica - 1].length == 0) {
+      if (store.state.Geilet.Prazdniki[first_sedmica - 1].length == 0) {
         this.OdnodnevnyPost += first_sedmica;
       }
       for (let i = first_sedmica + 9; i < this.KolichestvoDney + 1; i = i + 9) {
-        if (this.Prazdniki[i - 1].length == 0) {
+        if (store.state.Geilet.Prazdniki[i - 1].length == 0) {
           if (this.OdnodnevnyPost.length > 0) {
             this.OdnodnevnyPost += ", " + i;
           } else {
@@ -99,106 +110,7 @@ export default {
   },
   data() {
     return {
-      MESYAC: "Гейлѣтъ",
-      Prazdniki: [
-        "",
-        "День Винитара Воителя",
-        "",
-        "",
-        "",
-        "",
-        "День Горислава Мученика",
-        "",
-        "",
-        "",
-        "",
-        "День Светоzара Вечнаго",
-        "",
-        "",
-        "",
-        "",
-        "День Харiя Правѣднаго",
-        "",
-        "",
-        "",
-        "",
-        "День Рамхата Странниkа",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "День Дида",
-        "",
-        "",
-        "",
-        "День БОГА ВЬЛЕСА",
-        "",
-        "",
-        "День Храма Души",
-        "",
-      ],
-      DniPredkov: [
-        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      ],
-      RoditelskieDni: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 0,
-      ],
-      Post: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0,
-      ],
       OdnodnevnyPost: "",
-      DopolnitelnyeStili: [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-      ],
     };
   },
 };

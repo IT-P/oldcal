@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="title red">{{ MESYAC }} ({{ Leto }})</span><br />
-    <span class="subtitle">Месяц Ветровъ</span>
+    <span class="subtitle">{{ MESYAC_OPISANIE }}</span>
   </div>
   <setka-mesyaca
     :Leto="Leto"
@@ -63,6 +63,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+import store from "../store";
 import SetkaMesyaca from "./SetkaMesyaca.vue";
 export default {
   name: "Veilet",
@@ -85,6 +87,17 @@ export default {
       },
     },
   },
+  computed: {
+    ...mapState({
+      MESYAC: (state) => state.Veilet.MESYAC,
+      MESYAC_OPISANIE: (state) => state.Veilet.MESYAC_OPISANIE,
+      Prazdniki: (state) => state.Veilet.Prazdniki,
+      DniPredkov: (state) => state.Veilet.DniPredkov,
+      RoditelskieDni: (state) => state.Veilet.RoditelskieDni,
+      Post: (state) => state.Veilet.Post,
+      DopolnitelnyeStili: (state) => state.Veilet.DopolnitelnyeStili,
+    }),
+  },
   methods: {
     sedmicy: function () {
       this.OdnodnevnyPost = "";
@@ -93,11 +106,11 @@ export default {
       if (first_sedmica < 1) {
         first_sedmica = first_sedmica + 9;
       }
-      if (this.Prazdniki[first_sedmica - 1].length == 0) {
+      if (store.state.Veilet.Prazdniki[first_sedmica - 1].length == 0) {
         this.OdnodnevnyPost += first_sedmica;
       }
       for (let i = first_sedmica + 9; i < this.KolichestvoDney + 1; i = i + 9) {
-        if (this.Prazdniki[i - 1].length == 0) {
+        if (store.state.Veilet.Prazdniki[i - 1].length == 0) {
           if (this.OdnodnevnyPost.length > 0) {
             this.OdnodnevnyPost += ", " + i;
           } else {
@@ -109,106 +122,7 @@ export default {
   },
   data() {
     return {
-      MESYAC: "Вейлѣтъ",
-      Prazdniki: [
-        "",
-        "",
-        "",
-        "",
-        "День Всеволода Мудраго",
-        "",
-        "",
-        "",
-        "День Бога Вышьня",
-        "",
-        "",
-        "День Бога Яровита",
-        "",
-        "День Ратибора Воителя",
-        "",
-        "",
-        "",
-        "День Мудрости Будха",
-        "",
-        "",
-        "",
-        "РА-М-Ха-ИНТА",
-        "",
-        "",
-        "День Вѣдаслава Правѣдника",
-        "",
-        "ТРИГЛАВЪ",
-        "",
-        "",
-        "РОДОНИЦА",
-        "День ЧИСЛОБОГА",
-        "День ЛАДААДА",
-        "День Бога ХОРСА",
-        "День Ясуни",
-        "День Родовита",
-        "День Поzвѣzда",
-        "День Родарита",
-        "День РОДАГОСТА",
-        "День КРОДА",
-        "Русалiи",
-        "Русалiи",
-      ],
-      DniPredkov: [
-        0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-        1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      ],
-      RoditelskieDni: [
-        0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-        0, 0, 1, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-      ],
-      Post: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-      ],
       OdnodnevnyPost: "",
-      DopolnitelnyeStili: [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-      ],
     };
   },
 };

@@ -1,7 +1,7 @@
 <template>
   <div>
     <span class="title red">{{ MESYAC }} ({{ Leto }})</span><br />
-    <span class="subtitle">Месяц Белаго Сiянiя и Покоя Мiра</span>
+    <span class="subtitle">{{ MESYAC_OPISANIE }}</span>
   </div>
   <setka-mesyaca
     :Leto="Leto"
@@ -43,8 +43,7 @@
   <br />
   <div class="red">Славяно-Арийckiя праzдниkи на месяц {{ MESYAC }}</div>
   <div class="spisok_prazdnikov">
-    <span class="red">1</span
-    >&nbsp;-&nbsp;День&nbsp;ДАЖДЬБОГА&nbsp;и&nbsp;МАРЕНЫ
+    <span class="red">1</span>&nbsp;-&nbsp;День&nbsp;ДАЖДЬБОГА&nbsp;и&nbsp;МАРЕНЫ
     <span class="red">4</span>&nbsp;-&nbsp;День&nbsp;Марьяны&nbsp;и&nbsp;Марены
     <span class="red">7</span>&nbsp;-&nbsp;День&nbsp;Успокоенiя
     <span class="red">13</span>&nbsp;-&nbsp;День&nbsp;Переменъ,&nbsp;Коляда
@@ -52,13 +51,14 @@
     <span class="red">20</span>&nbsp;-&nbsp;День&nbsp;Всеволода&nbsp;Вечнаго
     <span class="red">22</span>&nbsp;-&nbsp;День&nbsp;Великаго&nbsp;Покоя
     <span class="red">29</span>&nbsp;-&nbsp;РОДОГОЩЬ
-    <span class="red">33</span
-    >&nbsp;-&nbsp;Зимний&nbsp;День&nbsp;БОГА&nbsp;ПЕРУНА
+    <span class="red">33</span>&nbsp;-&nbsp;Зимний&nbsp;День&nbsp;БОГА&nbsp;ПЕРУНА
     <span class="red">38</span>&nbsp;-&nbsp;День&nbsp;Александра&nbsp;Основателя
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+import store from "../store";
 import SetkaMesyaca from "./SetkaMesyaca.vue";
 export default {
   name: "Beilet",
@@ -81,6 +81,17 @@ export default {
       },
     },
   },
+  computed: {
+    ...mapState({
+      MESYAC: (state) => state.Beilet.MESYAC,
+      MESYAC_OPISANIE: (state) => state.Beilet.MESYAC_OPISANIE,
+      Prazdniki: (state) => state.Beilet.Prazdniki,
+      DniPredkov: (state) => state.Beilet.DniPredkov,
+      RoditelskieDni: (state) => state.Beilet.RoditelskieDni,
+      Post: (state) => state.Beilet.Post,
+      DopolnitelnyeStili: (state) => state.Beilet.DopolnitelnyeStili,
+    }),
+  },
   methods: {
     sedmicy: function () {
       this.OdnodnevnyPost = "";
@@ -89,11 +100,11 @@ export default {
       if (first_sedmica < 1) {
         first_sedmica = first_sedmica + 9;
       }
-      if (this.Prazdniki[first_sedmica - 1].length == 0) {
+      if (store.state.Beilet.Prazdniki[first_sedmica - 1].length == 0) {
         this.OdnodnevnyPost += first_sedmica;
       }
       for (let i = first_sedmica + 9; i < this.KolichestvoDney + 1; i = i + 9) {
-        if (this.Prazdniki[i - 1].length == 0) {
+        if (store.state.Beilet.Prazdniki[i - 1].length == 0) {
           if (this.OdnodnevnyPost.length > 0) {
             this.OdnodnevnyPost += ", " + i;
           } else {
@@ -105,106 +116,7 @@ export default {
   },
   data() {
     return {
-      MESYAC: "Бейлѣтъ",
-      Prazdniki: [
-        "День ДАЖДЬБОГА и МАРЕНЫ",
-        "",
-        "",
-        "День Марьяны и Марены",
-        "",
-        "",
-        "День Успокоенiя",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "День Переменъ, Коляда",
-        "",
-        "",
-        "",
-        "",
-        "День Спасителя Расы",
-        "",
-        "День Всеволода Вечнаго",
-        "",
-        "День Великаго Покоя",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "РОДОГОЩЬ",
-        "",
-        "",
-        "",
-        "Зимний День БОГА ПЕРУНА",
-        "",
-        "",
-        "",
-        "",
-        "День Александра Основателя",
-        "",
-        "",
-        "",
-      ],
-      DniPredkov: [
-        0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      ],
-      RoditelskieDni: [
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1,
-        1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      ],
-      Post: [
-        1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0,
-        0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      ],
       OdnodnevnyPost: "",
-      DopolnitelnyeStili: [
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "nedelya_predkov",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-      ],
     };
   },
 };
