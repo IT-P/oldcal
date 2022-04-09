@@ -255,33 +255,40 @@ export default {
   methods: {
     tekuschee_leto: function () {
       const current_grig_date = new Date();
-      if (current_grig_date.getMonth() < 9) {
+      if (current_grig_date.getMonth() < 8) {
         this.LETO = 5508 + current_grig_date.getFullYear();
       }
-      if (current_grig_date.getMonth() > 9) {
+      if (current_grig_date.getMonth() > 8) {
         this.LETO = 5509 + current_grig_date.getFullYear();
       }
-      if (current_grig_date.getMonth() == 9) {
+      if (current_grig_date.getMonth() == 8) {
         var tmp_leto = 5509 + current_grig_date.getFullYear();
-        var tmp_leto_v_kruge_zhizni = tmp_leto - 7520;
-        var tmp_leto_v_kruge_let = (tmp_leto_v_kruge_zhizni % 16) - 1;
-        if (tmp_leto_v_kruge_let < 0) {
-          tmp_leto_v_kruge_let = 15;
+        var tmp_leto_v_kruge_zhizni = (tmp_leto - 32) % 144;
+        if (tmp_leto_v_kruge_zhizni === 0) {
+          tmp_leto_v_kruge_zhizni = 144;
+        }
+        var tmp_leto_v_kruge_let = tmp_leto_v_kruge_zhizni % 16;
+
+        if (tmp_leto_v_kruge_let === 0) {
+          tmp_leto_v_kruge_let = 16;
         }
         if (
-          current_grig_date.getDate() < this.grig_den_nachala_leta[tmp_leto_v_kruge_let]
+          current_grig_date.getDate() <
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
         ) {
           this.LETO = 5508 + current_grig_date.getFullYear();
         }
 
         if (
-          current_grig_date.getDate() > this.grig_den_nachala_leta[tmp_leto_v_kruge_let]
+          current_grig_date.getDate() >
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
         ) {
           this.LETO = 5509 + current_grig_date.getFullYear();
         }
 
         if (
-          current_grig_date.getDate() == this.grig_den_nachala_leta[tmp_leto_v_kruge_let]
+          current_grig_date.getDate() ==
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
         ) {
           if (current_grig_date.getHours() < 18) {
             this.LETO = 5508 + current_grig_date.getFullYear();
