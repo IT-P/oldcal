@@ -1,6 +1,8 @@
 import { createStore } from "vuex";
 import nazvaniyaLet from "./NazvaniyaLet";
 import opisaniyaLet from "./OpisaniyaLet";
+import grigDates from "./GrigDates";
+import slavDates from "./SlavDates";
 
 const store = createStore({
   state: () => ({}),
@@ -10,6 +12,8 @@ const store = createStore({
   modules: {
     NazvaniyaLet: nazvaniyaLet,
     OpisaniyaLet: opisaniyaLet,
+    GrigDates: grigDates,
+    SlavDates: slavDates,
   },
 });
 
