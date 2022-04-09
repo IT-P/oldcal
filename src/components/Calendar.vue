@@ -26,9 +26,13 @@
         </th>
       </tr>
     </table>
-    <div class="opisanie_leta">
-      {{ OPISANIYA_LET[LETO_V_KRUGE_ZHIZNI - 1] }}
+    <div class="opisanie_leta" v-if="opisanie_leta">
+      <div style="text-align: center" class="title red">Описание лета:</div>
+      <div style="text-align: center">
+        {{ OPISANIYA_LET[LETO_V_KRUGE_ZHIZNI - 1] }}
+      </div>
     </div>
+    <br />
     <div style="page-break-after: always"></div>
     <ramhat
       :Leto="LETO"
@@ -209,6 +213,7 @@
 
 <script>
 import { mapState } from "vuex";
+import store from "../store";
 import Ramhat from "./Ramhat.vue";
 import Ailet from "./Ailet.vue";
 import Beilet from "./Beilet.vue";
@@ -327,6 +332,13 @@ export default {
         this.kolichestvo_dney_v_mesyace[7] = 40;
         this.kolichestvo_dney_v_mesyace[8] = 41;
       }
+      if (
+        store.state.OpisaniyaLet.OPISANIYA_LET[this.LETO_V_KRUGE_ZHIZNI - 1].length == 0
+      ) {
+        this.opisanie_leta = false;
+      } else {
+        this.opisanie_leta = true;
+      }
     },
   },
   data() {
@@ -337,6 +349,7 @@ export default {
       LETO_V_KRUGE_ZHIZNI: 0,
       LETO_V_KRUGE_LET: 0,
       kolichestvo_dney_v_mesyace: [41, 40, 41, 40, 41, 40, 41, 40, 41],
+      opisanie_leta: true,
     };
   },
 };

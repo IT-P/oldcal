@@ -361,11 +361,11 @@ export default {
     DenNachalaMesyaca: Number,
     DenNachalaMesyacaGrig: String,
     KolichestvoDney: Number,
-    Prazdniki: Array(String),
+    Prazdniki: Array,
     DniPredkov: Array,
     RoditelskieDni: Array,
     Post: Array,
-    DopolnitelnyeStili: Array(String),
+    DopolnitelnyeStili: Array,
   },
   name: "SetkaMesyaca",
   methods: {
