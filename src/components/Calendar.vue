@@ -14,8 +14,7 @@
     <table border="0" class="zagolovok" width="800px">
       <tr>
         <th class="bok" width="33%">
-          <!-- {{ NAZVANIYA_LET[LETO_V_KRUGE_ZHIZNI - 1] }} <br /> -->
-          {{ nazvaniye_leta(LETO_V_KRUGE_ZHIZNI - 1) }} <br />
+          {{ NAZVANIYA_LET[LETO_V_KRUGE_ZHIZNI - 1] }} <br />
           {{ LETO_V_KRUGE_ZHIZNI }}-е Лѣто 53-го Круга<br />
           на Круголѣте Числобога
         </th>
@@ -28,8 +27,7 @@
       </tr>
     </table>
     <div class="opisanie_leta">
-      <!-- {{ OPISNIYA_LET[LETO_V_KRUGE_ZHIZNI - 1] }} -->
-      {{ opisaniye_leta(LETO_V_KRUGE_ZHIZNI - 1) }}
+      {{ OPISANIYA_LET[LETO_V_KRUGE_ZHIZNI - 1] }}
     </div>
     <div style="page-break-after: always"></div>
     <ramhat
@@ -210,10 +208,7 @@
 </template>
 
 <script>
-import nazvaniyeLeta from "../js/NazvaniyaLet.js";
-import opisaniyeLeta from "../js/OpisaniyaLet.js";
-// import grig_den_nachala_leta from "../js/DateTranslate.js"
-// import tekuscheeLeto from "../js/DateTranslate.js"
+import { mapState } from "vuex";
 import Ramhat from "./Ramhat.vue";
 import Ailet from "./Ailet.vue";
 import Beilet from "./Beilet.vue";
@@ -240,13 +235,13 @@ export default {
   created: function () {
     this.tekuschee_leto();
   },
+  computed: {
+    ...mapState({
+      NAZVANIYA_LET: (state) => state.NazvaniyaLet.NAZVANIYA_LET,
+      OPISANIYA_LET: (state) => state.OpisaniyaLet.OPISANIYA_LET,
+    }),
+  },
   methods: {
-    nazvaniye_leta: function (leto) {
-      return nazvaniyeLeta(leto);
-    },
-    opisaniye_leta: function (leto) {
-      return opisaniyeLeta(leto);
-    },
     tekuschee_leto: function () {
       const current_grig_date = new Date();
       if (current_grig_date.getMonth() < 9) {
