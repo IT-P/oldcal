@@ -254,14 +254,14 @@ export default {
   },
   methods: {
     tekuschee_leto: function () {
-      const current_grig_date = new Date();
+      var current_grig_date = new Date();
+      current_grig_date.setDate(current_grig_date.getDate() - 1);
+
       if (current_grig_date.getMonth() < 8) {
         this.LETO = 5508 + current_grig_date.getFullYear();
-      }
-      if (current_grig_date.getMonth() > 8) {
+      } else if (current_grig_date.getMonth() > 8) {
         this.LETO = 5509 + current_grig_date.getFullYear();
-      }
-      if (current_grig_date.getMonth() == 8) {
+      } else if (current_grig_date.getMonth() == 8) {
         var tmp_leto = 5509 + current_grig_date.getFullYear();
         var tmp_leto_v_kruge_zhizni = (tmp_leto - 32) % 144;
         if (tmp_leto_v_kruge_zhizni === 0) {
@@ -274,27 +274,14 @@ export default {
         }
         if (
           current_grig_date.getDate() <
-          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1] - 1
         ) {
           this.LETO = 5508 + current_grig_date.getFullYear();
-        }
-
-        if (
-          current_grig_date.getDate() >
-          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
+        } else if (
+          current_grig_date.getDate() >=
+          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1] - 1
         ) {
           this.LETO = 5509 + current_grig_date.getFullYear();
-        }
-
-        if (
-          current_grig_date.getDate() ==
-          this.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
-        ) {
-          if (current_grig_date.getHours() < 18) {
-            this.LETO = 5508 + current_grig_date.getFullYear();
-          } else {
-            this.LETO = 5509 + current_grig_date.getFullYear();
-          }
         }
       }
       this.TEKUSCHEE_LETO = this.LETO;

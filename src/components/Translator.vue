@@ -4,7 +4,13 @@
   </div>
   <div class="translator">
     <h3>Перевод дат</h3>
-    <input type="date" class="grig_date" v-model="grig_date_string" min="1918-01-01" />
+    <span>
+      <button @click="day_minus()">&nbsp;-&nbsp;</button>
+      &nbsp;
+      <input type="date" class="grig_date" v-model="grig_date_string" min="1918-01-01" />
+      &nbsp;
+      <button @click="day_plus()">&nbsp;+&nbsp;</button>
+    </span>
   </div>
   <br />
   <!-- <div>
@@ -85,9 +91,20 @@ export default {
       }
       return number;
     },
+    day_minus: function () {
+      this.date = new Date(this.grig_date_string);
+      this.date.setDate(this.date.getDate() - 1);
+      this.dateToString();
+    },
+    day_plus: function () {
+      this.date = new Date(this.grig_date_string);
+      this.date.setDate(this.date.getDate() + 1);
+      this.dateToString();
+    },
     translate: function () {
-      var current_grig_date = new Date(this.grig_date_string);
-      this.date = current_grig_date;
+      this.date = new Date(this.grig_date_string);
+      var current_grig_date = this.date;
+      current_grig_date.setDate(current_grig_date.getDate() - 1);
 
       if (current_grig_date < this.min_date) {
         current_grig_date = this.min_date;
@@ -103,11 +120,9 @@ export default {
       // this.Den = current_grig_date;
       if (current_grig_date.getMonth() < 8) {
         this.LETO = 5508 + current_grig_date.getFullYear();
-      }
-      if (current_grig_date.getMonth() > 8) {
+      } else if (current_grig_date.getMonth() > 8) {
         this.LETO = 5509 + current_grig_date.getFullYear();
-      }
-      if (current_grig_date.getMonth() == 8) {
+      } else if (current_grig_date.getMonth() == 8) {
         var tmp_leto = 5509 + current_grig_date.getFullYear();
         var tmp_leto_v_kruge_zhizni = (tmp_leto - 32) % 144;
         if (tmp_leto_v_kruge_zhizni === 0) {
@@ -121,29 +136,17 @@ export default {
 
         if (
           current_grig_date.getDate() <
-          store.state.GrigDates.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
+          store.state.GrigDates.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1] - 1
         ) {
           this.LETO = 5508 + current_grig_date.getFullYear();
-        }
-
-        if (
-          current_grig_date.getDate() >
-          store.state.GrigDates.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
+        } else if (
+          current_grig_date.getDate() >=
+          store.state.GrigDates.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1] - 1
         ) {
           this.LETO = 5509 + current_grig_date.getFullYear();
         }
-
-        if (
-          current_grig_date.getDate() ==
-          store.state.GrigDates.grig_den_nachala_leta[tmp_leto_v_kruge_let - 1]
-        ) {
-          if (current_grig_date.getHours() < 18) {
-            this.LETO = 5508 + current_grig_date.getFullYear();
-          } else {
-            this.LETO = 5509 + current_grig_date.getFullYear();
-          }
-        }
       }
+
       this.LETO_V_KRUGE_ZHIZNI = (this.LETO - 32) % 144;
       if (this.LETO_V_KRUGE_ZHIZNI === 0) {
         this.LETO_V_KRUGE_ZHIZNI = 144;
@@ -154,6 +157,7 @@ export default {
       }
       this.NAZVANIYE_LETA =
         store.state.NazvaniyaLet.NAZVANIYA_LET[this.LETO_V_KRUGE_ZHIZNI - 1];
+
       this.getMesyac();
     },
     getMesyac: function () {
