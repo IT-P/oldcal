@@ -50,7 +50,7 @@
     <span class="red">24</span>&nbsp;-&nbsp;День&nbsp;Свентослава&nbsp;Асгардскаго
     <span class="red">27</span>&nbsp;-&nbsp;ДЖИВА-ИНТА
     <span class="red">29</span>&nbsp;-&nbsp;День&nbsp;ЖЕЛИ
-    <span class="red">31</span>&nbsp;-&nbsp;День&nbsp;Святослва&nbsp;Правѣднаго
+    <span class="red">31</span>&nbsp;-&nbsp;День&nbsp;Святослава&nbsp;Правѣднаго
     <span class="red">33</span>&nbsp;-&nbsp;Сеченникъ
     <span class="red">35</span>&nbsp;-&nbsp;День&nbsp;Богини&nbsp;КАРНЫ
     <span class="red">38</span>&nbsp;-&nbsp;День&nbsp;Свѣтоzара&nbsp;Странниkа
